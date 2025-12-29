@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+cd app && yarn commitlint -g ./commitlint.config.ts --edit "${1}"

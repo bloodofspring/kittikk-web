@@ -1,0 +1,4 @@
+public
+out
+*.config.ts
+*.d.ts

@@ -1,0 +1,30 @@
+name: kittikk
+
+services:
+  app-dev:
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile.development
+    volumes:
+      - ../app:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped
+
+  app-prod:
+    # IMPORTANT:
+    # Image name must match what GitHub Actions pushes to Docker Hub.
+    # By default we use `kittikk/kittikk:latest`, but for forks/other accounts
+    # you can override it via `DOCKER_IMAGE` environment variable on the VPS.
+    image: ${DOCKER_IMAGE:-kittikk/kittikk:latest}
+    container_name: kittikk
+    restart: always
+    ports:
+      # Bind only to localhost: nginx is on the same VPS and will proxy to this port.
+      # You can override host port, e.g. `APP_PORT=3007 docker compose ... up -d app-prod`
+      - "127.0.0.1:${APP_PORT:-3007}:3000"
+    environment:
+      - NODE_ENV=production

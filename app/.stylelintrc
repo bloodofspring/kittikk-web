@@ -1,0 +1,60 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-standard-scss"
+  ],
+  "plugins": ["stylelint-order", "@stylistic/stylelint-plugin"],
+  "rules": {
+    "order/properties-alphabetical-order": true,
+    "selector-class-pattern": null,
+    "custom-property-pattern": null,
+    "keyframes-name-pattern": null,
+    "color-function-notation": "modern",
+    "color-hex-length": "short",
+    "custom-property-empty-line-before": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "media-feature-range-notation": "prefix",
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["extends", "tailwind", "layer", "apply"]
+      }
+    ],
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": ["composes"]
+      }
+    ],
+    "value-no-vendor-prefix": true,
+    "no-duplicate-selectors": true,
+    "color-named": "never",
+    "function-url-quotes": "always",
+    "selector-attribute-quotes": "always",
+    "@stylistic/indentation": 2,
+    "@stylistic/string-quotes": "single",
+    "@stylistic/color-hex-case": "lower",
+    "@stylistic/selector-combinator-space-after": "always",
+    "@stylistic/selector-attribute-operator-space-before": "never",
+    "@stylistic/selector-attribute-operator-space-after": "never",
+    "@stylistic/selector-attribute-brackets-space-inside": "never",
+    "@stylistic/declaration-block-trailing-semicolon": "always",
+    "@stylistic/declaration-colon-space-before": "never",
+    "@stylistic/declaration-colon-space-after": "always",
+    "@stylistic/number-leading-zero": "always",
+    "@stylistic/declaration-block-semicolon-newline-after": "always",
+    "@stylistic/declaration-block-semicolon-space-before": "never",
+    "@stylistic/block-closing-brace-empty-line-before": "never",
+    "@stylistic/block-closing-brace-newline-after": "always",
+    "@stylistic/block-opening-brace-newline-after": "always-multi-line",
+    "@stylistic/block-opening-brace-space-before": "always",
+    "@stylistic/value-list-comma-newline-after": "always-multi-line"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.{ts,tsx}"],
+      "customSyntax": "@linaria/postcss-linaria"
+    }
+  ]
+} 

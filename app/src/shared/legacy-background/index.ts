@@ -1,0 +1,1 @@
+export { initLegacyBackground } from './initLegacyBackground'

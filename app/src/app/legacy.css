@@ -1,0 +1,126 @@
+body {
+  align-items: center;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  font-family: Didot, monospace;
+  font-size: 2em;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+
+  /* Body background is just a fallback; real background is drawn in .bg-layer */
+
+  position: relative;
+  text-shadow: 2px 2px 4px rgb(0 0 0 / 70%);
+}
+
+.content-wrapper {
+  /* Wrapper for the foreground content (card, etc.) so we can animate it independently. */
+  position: relative;
+  will-change: transform, opacity;
+}
+
+.bg-layer {
+  /* Mobile-first: cheap, but smooth (opacity crossfade only).
+     Desktop overrides below (hover + fine pointer) enable blur + overlay. */
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* Ensure visual effects (e.g. filter blur) never "bleed" outside the viewport. */
+  clip-path: inset(0);
+  contain: paint;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  transition: opacity 260ms ease-in-out;
+  z-index: 0;
+}
+
+.bg-layer.is-visible {
+  opacity: 1;
+}
+
+.bg-layer.is-sharp {
+  /* desktop-only (see media query below) */
+}
+
+body::before {
+  background: radial-gradient(
+    circle at center,
+    rgb(0 0 0 / 0%) 0%,
+    rgb(0 0 0 / 0%) 45%,
+    rgb(0 0 0 / 55%) 100%
+  );
+  content: '';
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: 1;
+}
+
+/* Mobile portrait: make the vignette a bit stronger so "dimming" reads clearly. */
+@media (hover: none) and (pointer: coarse) and (orientation: portrait) {
+  body::before {
+    background: radial-gradient(
+      circle at center,
+      rgb(0 0 0 / 0%) 0%,
+      rgb(0 0 0 / 0%) 35%,
+      rgb(0 0 0 / 68%) 100%
+    );
+  }
+}
+
+body::after {
+  /* Desktop-only heavy overlay. Disabled by default to keep mobile smooth. */
+  content: none;
+}
+
+/* Lightweight mode: remove gradient/vignette overlays so only "liquid glass" remains. */
+.content-wrapper h1 {
+  font-size: 70px;
+}
+
+p {
+  font-size: 0.8em;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* PC-only: blur + crossfade + overlay */
+@media (hover: hover) and (pointer: fine) and (min-width: 1000px) {
+  .bg-layer {
+    filter: blur(14px);
+    opacity: 0;
+    transition: opacity 420ms ease-in-out, filter 420ms ease-in-out;
+    z-index: 0;
+  }
+
+  .bg-layer.is-visible {
+    opacity: 1;
+  }
+
+  .bg-layer.is-sharp {
+    filter: blur(0);
+  }
+
+  body::after {
+    /* Disable backdrop blur to avoid a visible "frame" around the center on some images. */
+    backdrop-filter: none;
+    background: rgb(0 0 0 / 50%);
+    content: '';
+    inset: 0;
+    mask-image: radial-gradient(
+      circle at center,
+      rgb(0 0 0 / 0%) 0%,
+      rgb(0 0 0 / 20%) 20%,
+      rgb(0 0 0 / 100%) 100%
+    );
+    pointer-events: none;
+    position: fixed;
+    z-index: 1;
+  }
+}

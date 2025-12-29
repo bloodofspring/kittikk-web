@@ -1,0 +1,61 @@
+FROM node:24-alpine AS base
+WORKDIR /app
+
+# Build metadata (passed from CI)
+ARG VCS_REF=unknown
+ARG BUILD_DATE=unknown
+
+# Install dependencies only when needed
+FROM base AS deps
+COPY app/package.json app/yarn.lock* app/package-lock.json* ./
+RUN yarn config set registry https://registry.npmjs.org \
+  && yarn install --frozen-lockfile --network-timeout 600000
+
+# Rebuild the source code only when needed
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY app/ .
+
+# Set environment variables
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
+
+# Build the application
+RUN yarn build
+
+# Production image, copy all the files and run next
+FROM base AS runner
+WORKDIR /app
+
+ARG VCS_REF=unknown
+ARG BUILD_DATE=unknown
+
+LABEL org.opencontainers.image.revision=$VCS_REF \
+      org.opencontainers.image.created=$BUILD_DATE
+
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# NOTE:
+# In `output: "standalone"` Next embeds the resolved config into the generated
+# `server.js`. Copying `next.config.*` into the runtime image can cause startup
+# crashes if the config imports build-time plugins that are not present in the
+# traced standalone node_modules.
+COPY --from=builder /app/public ./public
+
+# Automatically leverage output traces to reduce image size
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT=3000
+
+# Start the application
+CMD ["node", "server.js"] 
