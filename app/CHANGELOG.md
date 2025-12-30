@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/bloodofspring/kittikk-web/compare/v1.0.0...v1.1.0) (2025-12-30)
+
+
+### Features
+
+* Добавлены картиночки ([a44501f](https://github.com/bloodofspring/kittikk-web/commit/a44501f7e55e3f6112ee87bfd2a5130fc5a615c0))
+
 # 1.0.0 (2025-12-30)
 
 
