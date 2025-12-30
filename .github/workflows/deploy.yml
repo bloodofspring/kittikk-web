@@ -77,10 +77,14 @@ jobs:
           context: .
           file: .docker/Dockerfile.production
           push: true
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           build-args: |
             VCS_REF=${{ github.sha }}
             BUILD_DATE=${{ github.event.head_commit.timestamp }}
+            VERSION=${{ github.ref_name }}
+            NEXT_PUBLIC_API_URL=${{ vars.API_URL }}
           # Keep tag in sync with `.docker/docker-compose.yml` (app-prod.image),
           # otherwise the VPS will pull a different image than the one built here.
           tags: |
