@@ -1,3 +1,11 @@
+# 1.0.0 (2025-12-30)
+
+
+### Features
+
+* Initial commit ([394a0de](https://github.com/bloodofspring/kittikk-web/commit/394a0de3e9695841f121efc4e8185f0ef4b42667))
+* Добавлены изображения 83-173 ([db126bc](https://github.com/bloodofspring/kittikk-web/commit/db126bc5caead3923a3c16019cf1149dd9f3beb0))
+
 # [1.15.0](https://github.com/bloodofspring/kittikk-web/compare/v1.14.0...v1.15.0) (2025-12-29)
 
 
