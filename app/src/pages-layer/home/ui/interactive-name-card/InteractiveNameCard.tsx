@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useMemo } from 'react'
 
 import nameSign from '@/shared/assets/images/NameSign.png'
 
@@ -9,37 +9,23 @@ import { Card } from './InteractiveNameCard.styles'
 import { DescriptionContainer } from './description/descriptionContainer'
 import { useLiquidGlassCard } from './useLiquidGlassCard'
 
-export const InteractiveNameCard = () => {
-  const [isLightweight, setIsLightweight] = useState(false)
+type TContainerProps = {
+  isActive: boolean
+}
 
-  useEffect(() => {
-    try {
-      setIsLightweight(window.localStorage.getItem('kittikk:lightweight-graphics') === '1')
-    } catch {
-      // ignore
-    }
-
-    const onModeChange = (e: Event) => {
-      const ce = e as CustomEvent<{ enabled?: boolean }>
-      if (typeof ce.detail?.enabled === 'boolean') setIsLightweight(ce.detail.enabled)
-    }
-
-    window.addEventListener('kittikk:lightweight-graphics-change', onModeChange as EventListener)
-    return () => {
-      window.removeEventListener(
-        'kittikk:lightweight-graphics-change',
-        onModeChange as EventListener,
-      )
-    }
-  }, [])
-
-  const { ref, onPointerDown, onPointerEnter, onPointerLeave, onPointerMove, onPointerUp } =
-    useLiquidGlassCard({
-      enabled: !isLightweight,
-      idleMotion: 'follow',
+export const InteractiveNameCard = ({ isActive }: TContainerProps) => {
+  const liquidGlassOptions = useMemo(
+    () => ({
+      enabled: !isActive,
+      idleMotion: 'follow' as const,
       idleMoveSpeed: 0.25,
       secondaryCenters: 2,
-    })
+    }),
+    [isActive],
+  )
+
+  const { ref, onPointerDown, onPointerEnter, onPointerLeave, onPointerMove, onPointerUp } =
+    useLiquidGlassCard(liquidGlassOptions)
 
   return (
     <Card
