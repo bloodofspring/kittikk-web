@@ -87,3 +87,19 @@ export const Face = styled.div<{ faceId: number; origin?: string; transform?: st
     filter: saturate(1500%) blur(20px);
   }
 `
+
+export const EdgeOutline = styled.svg`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+
+  path {
+    fill: none;
+    stroke: white;
+    stroke-width: 1;
+  }
+`

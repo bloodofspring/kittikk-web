@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { facesConfig } from '@/pages/home/ui/name-card-v2/InteractiveNameCardv2.constants'
 import nameSign from '@/shared/assets/images/NameSign.png'
 
-import { Wrapper, TetraContainer, Face } from './InteractiveNameCardv2.styles'
+import { Wrapper, TetraContainer, Face, EdgeOutline } from './InteractiveNameCardv2.styles'
 
 const SurfaceImage = () => (
   <Image
@@ -37,6 +37,9 @@ export const InteractiveNameCardv2 = ({ isActive }: IProps) => (
           transform={config.transform}
         >
           <SurfaceImage />
+          <EdgeOutline preserveAspectRatio="none" viewBox="0 0 100 100">
+            <path d="M 50 0 L 100 100 L 0 100 Z" />
+          </EdgeOutline>
         </Face>
       ))}
     </TetraContainer>
