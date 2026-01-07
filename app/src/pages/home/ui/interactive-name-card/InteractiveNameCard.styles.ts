@@ -25,13 +25,14 @@ const CAUSTIC_POINTS: TCausticPoint[] = [
 
 const causticVarDecl = Array.from({ length: CAUSTIC_POINTS.length }, (_, i) => {
   const idx = i + 1
-  return `  --c${idx}-a: 1;
-  --c${idx}-s: 1;`
+
+  return `--c${idx}-a: 1; --c${idx}-s: 1;`
 }).join('\n')
 
 const causticLayers = CAUSTIC_POINTS.map((p, i) => {
   const idx = i + 1
-  return `      radial-gradient(
+
+  return `radial-gradient(
         closest-side at ${p.xPct}% ${p.yPct}%,
         hsl(
           ${p.h}
@@ -44,12 +45,14 @@ const causticLayers = CAUSTIC_POINTS.map((p, i) => {
 
 const secondaryVarDecl = Array.from({ length: SECONDARY_MAX_CENTERS }, (_, i) => {
   const idx = i + 2
+
   return `  --mx${idx}: 50%;
   --my${idx}: 50%;`
 }).join('\n')
 
 const secondaryHighlightLayers = Array.from({ length: SECONDARY_MAX_CENTERS }, (_, i) => {
   const idx = i + 2
+
   return `      radial-gradient(
         closest-side at var(--mx${idx}) var(--my${idx}),
         rgb(255 255 255 / calc(0.34 * var(--secondary-strength))),
@@ -59,6 +62,7 @@ const secondaryHighlightLayers = Array.from({ length: SECONDARY_MAX_CENTERS }, (
 
 const secondaryOilLayers = Array.from({ length: SECONDARY_MAX_CENTERS }, (_, i) => {
   const idx = i + 2
+
   return `      conic-gradient(
         from calc(var(--oil-spin) + ${40 + i * 35}deg) at var(--mx${idx}) var(--my${idx}),
         hsl(210 100% 74% / calc(0.40 * var(--secondary-strength))) 0deg,

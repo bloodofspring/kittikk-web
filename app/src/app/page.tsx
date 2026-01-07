@@ -1,7 +1,5 @@
-import { HomePage } from '@/pages-layer/home/ui/HomePage'
+import { HomePage } from '@/pages/home'
 
 const Page = () => <HomePage />
-
-// const Page = () => <div>Test Page</div>
 
 export default Page

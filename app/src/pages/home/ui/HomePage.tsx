@@ -3,7 +3,7 @@
 import { styled } from '@linaria/react'
 import { useEffect, useState } from 'react'
 
-import { InteractiveNameCard } from '@/pages-layer/home/ui/interactive-name-card/InteractiveNameCard'
+import { InteractiveNameCardv2 } from '@/pages/home/ui/name-card-v2/InteractiveNameCardv2'
 import { Background } from '@/widgets/background'
 
 const SwitchButton = styled.button`
@@ -43,7 +43,7 @@ export const HomePage = () => {
 
   return (
     <Background>
-      <InteractiveNameCard isActive={isLightweight} />
+      <InteractiveNameCardv2 isActive={isLightweight} />
       <SwitchButton
         suppressHydrationWarning
         aria-pressed={isLightweight}

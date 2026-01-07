@@ -3,10 +3,10 @@
 import Image from 'next/image'
 import { useMemo } from 'react'
 
+import { DescriptionContainer } from '@/pages/home/ui/shared/description/descriptionContainer'
 import nameSign from '@/shared/assets/images/NameSign.png'
 
 import { Card } from './InteractiveNameCard.styles'
-import { DescriptionContainer } from './description/descriptionContainer'
 import { useLiquidGlassCard } from './useLiquidGlassCard'
 
 type TContainerProps = {
@@ -45,7 +45,6 @@ export const InteractiveNameCard = ({ isActive }: TContainerProps) => {
           width: '100%',
           height: 'auto',
           userSelect: 'none',
-          // Prevent image-specific interactions (drag/long-press menu) while keeping the card interactive.
           pointerEvents: 'none',
         }}
         onContextMenu={(e) => e.preventDefault()}
