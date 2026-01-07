@@ -1,4 +1,4 @@
-import { HomePage } from '@/pages-layer/home/ui/HomePage'
+import { HomePage } from '@/pages/home'
 
 const Page = () => <HomePage />
 
