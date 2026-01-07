@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/bloodofspring/kittikk-web/compare/v1.1.0...v1.1.1) (2026-01-07)
+
+
+### Bug Fixes
+
+* Fixed default export error ([38330d9](https://github.com/bloodofspring/kittikk-web/commit/38330d970f0399c54cfaaa27de4b2477b349c2f3))
+
 # [1.1.0](https://github.com/bloodofspring/kittikk-web/compare/v1.0.0...v1.1.0) (2026-01-07)
 
 
