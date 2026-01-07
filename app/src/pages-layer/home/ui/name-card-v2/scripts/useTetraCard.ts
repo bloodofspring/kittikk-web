@@ -2,19 +2,19 @@
 
 import { useEffect, useRef } from 'react'
 
-import { GRADIENT, IDLE } from '@/pages/home/ui/name-card-v2/scripts/constants'
+import { GRADIENT, IDLE } from '@/pages-layer/home/ui/name-card-v2/scripts/constants'
 import {
   type TState,
   type TUseTetraGradientsOptions,
   type TUseTetraGradientsReturn,
-} from '@/pages/home/ui/name-card-v2/scripts/types'
+} from '@/pages-layer/home/ui/name-card-v2/scripts/types'
 import {
   applyCSSVariables,
   pickIdleTarget,
   updateFacePosition,
   updateFaceRotation,
-} from '@/pages/home/ui/name-card-v2/scripts/updateState'
-import { clamp, createInitialFaceState } from '@/pages/home/ui/name-card-v2/scripts/utils'
+} from '@/pages-layer/home/ui/name-card-v2/scripts/updateState'
+import { clamp, createInitialFaceState } from '@/pages-layer/home/ui/name-card-v2/scripts/utils'
 
 export const useTetraGradients = (
   options: TUseTetraGradientsOptions = {},

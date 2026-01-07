@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
-import { facesConfig } from '@/pages/home/ui/name-card-v2/InteractiveNameCardv2.constants'
-import { useTetraGradients } from '@/pages/home/ui/name-card-v2/scripts/useTetraCard'
+import { facesConfig } from '@/pages-layer/home/ui/name-card-v2/InteractiveNameCardv2.constants'
+import { useTetraGradients } from '@/pages-layer/home/ui/name-card-v2/scripts/useTetraCard'
 import nameSign from '@/shared/assets/images/NameSign.png'
 
 import { Wrapper, TetraContainer, Face, EdgeOutline } from './InteractiveNameCardv2.styles'

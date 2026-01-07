@@ -1,4 +1,4 @@
-import { type TFaceState } from '@/pages/home/ui/name-card-v2/scripts/types'
+import { type TFaceState } from '@/pages-layer/home/ui/name-card-v2/scripts/types'
 
 export const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v))
 

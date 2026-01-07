@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useMemo } from 'react'
 
-import { DescriptionContainer } from '@/pages/home/ui/shared/description/descriptionContainer'
+import { DescriptionContainer } from '@/pages-layer/home/ui/shared/description/descriptionContainer'
 import nameSign from '@/shared/assets/images/NameSign.png'
 
 import { Card } from './InteractiveNameCard.styles'

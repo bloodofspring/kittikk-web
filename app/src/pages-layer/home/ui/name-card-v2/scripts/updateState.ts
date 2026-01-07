@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
 
-import { IDLE } from '@/pages/home/ui/name-card-v2/scripts/constants'
-import { type TFaceState } from '@/pages/home/ui/name-card-v2/scripts/types'
-import { approach, clamp, randomBetween } from '@/pages/home/ui/name-card-v2/scripts/utils'
+import { IDLE } from '@/pages-layer/home/ui/name-card-v2/scripts/constants'
+import { type TFaceState } from '@/pages-layer/home/ui/name-card-v2/scripts/types'
+import { approach, clamp, randomBetween } from '@/pages-layer/home/ui/name-card-v2/scripts/utils'
 
 export const pickIdleTarget = (face: TFaceState, now: number, idleIntervalMs: number) => {
   const reached =
