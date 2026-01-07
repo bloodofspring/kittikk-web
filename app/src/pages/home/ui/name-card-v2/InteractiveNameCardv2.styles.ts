@@ -14,6 +14,11 @@ export const Wrapper = styled.div`
 
 export const TetraContainer = styled.div`
   --side-size: 50vw;
+
+  @media (max-width: 900px) {
+    --side-size: 75vw;
+  }
+
   --triangle-height: calc(var(--side-size) * 0.866);
 
   position: absolute;
@@ -35,7 +40,7 @@ export const TetraContainer = styled.div`
   }
 `
 
-export const Face = styled.div<{ faceId: number; origin?: string; transform?: string }>`
+export const Face = styled.div<{ origin?: string; transform?: string }>`
   position: absolute;
   left: calc(var(--side-size) / -2);
   top: calc(var(--triangle-height) / -1.5);
@@ -72,9 +77,19 @@ export const Face = styled.div<{ faceId: number; origin?: string; transform?: st
     pointer-events: none;
     opacity: 0.5;
 
+    /* Используем локальные переменные, которые будут установлены через inline styles */
+    --gradient-x: var(--face-gradient-x, 50%);
+    --gradient-y: var(--face-gradient-y, 50%);
+    --gradient-rotation: var(--face-gradient-rotation, 0deg);
+
     background:
-      radial-gradient(rgb(255 255 255 / 16%), rgb(0 0 0 / 0%) 62%),
+      radial-gradient(
+        closest-side at var(--gradient-x) var(--gradient-y),
+        rgb(255 255 255 / 16%),
+        rgb(0 0 0 / 0%) 62%
+      ),
       conic-gradient(
+        from var(--gradient-rotation) at var(--gradient-x) var(--gradient-y),
         hsl(330 100% 70% / 38%) 0deg,
         hsl(290 100% 72% / 34%) 45deg,
         hsl(210 100% 74% / 34%) 90deg,
@@ -87,7 +102,6 @@ export const Face = styled.div<{ faceId: number; origin?: string; transform?: st
     filter: saturate(1500%) blur(20px);
   }
 `
-
 export const EdgeOutline = styled.svg`
   position: absolute;
   top: 0;
