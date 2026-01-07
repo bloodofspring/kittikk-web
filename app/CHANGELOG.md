@@ -1,3 +1,19 @@
+# [1.1.0](https://github.com/bloodofspring/kittikk-web/compare/v1.0.0...v1.1.0) (2026-01-07)
+
+
+### Bug Fixes
+
+* Доекомпозирован InteractiveNameCardv2.tsx ([b71af85](https://github.com/bloodofspring/kittikk-web/commit/b71af85b89881289c27fbdd48864d75e4d07044a))
+* Исправлена ошибка с бесконечной перезагрузкой страницы ([13d35d1](https://github.com/bloodofspring/kittikk-web/commit/13d35d167f39781740dcbd56ea8d9c3d223845f7))
+
+
+### Features
+
+* Добавлена обводка рёбер ([9ba7239](https://github.com/bloodofspring/kittikk-web/commit/9ba7239f410c2f9df4426b2b34f10302a305f7e7))
+* Добавлено смещение точек градиента ([9c59db2](https://github.com/bloodofspring/kittikk-web/commit/9c59db2284af8b60b5f210dce16861bbda864351))
+* Добавлены картиночки ([a44501f](https://github.com/bloodofspring/kittikk-web/commit/a44501f7e55e3f6112ee87bfd2a5130fc5a615c0))
+* Призван вращающийся тетраэдэр ([109df62](https://github.com/bloodofspring/kittikk-web/commit/109df628874d4f431307b148518fc1fbf7c53cf3))
+
 # [1.1.0](https://github.com/bloodofspring/kittikk-web/compare/v1.0.0...v1.1.0) (2025-12-30)
 
 
