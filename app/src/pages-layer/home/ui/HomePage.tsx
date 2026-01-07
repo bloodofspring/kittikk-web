@@ -3,7 +3,7 @@
 import { styled } from '@linaria/react'
 import { useEffect, useState } from 'react'
 
-import { InteractiveNameCardv2 } from '@/pages/home/ui/name-card-v2/InteractiveNameCardv2'
+import { InteractiveNameCardv2 } from '@/pages-layer/home/ui/name-card-v2/InteractiveNameCardv2'
 import { Background } from '@/widgets/background'
 
 const SwitchButton = styled.button`
